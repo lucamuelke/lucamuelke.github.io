@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termine - Bouldern & Klettern AG</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Banner/Navigation -->
+    <header class="banner">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" alt="Bouldern & Klettern AG Logo" class="logo-icon">
+                <span class="logo-text">Bouldern & Klettern AG</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-de="Start" data-en="Home">Start</a></li>
+                    <li><a href="events.html" class="active" data-de="Termine" data-en="Events">Termine</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
+                </ul>
+            </nav>
+            <button class="language-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
+                <span id="flag">🇩🇪</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="page-header">
+            <h1 class="multilang" data-de="Termine" data-en="Events">Termine</h1>
+            <p class="multilang" 
+               data-de="Hier findest du unsere kommenden Klettertermine und Veranstaltungen." 
+               data-en="Here you can find our upcoming climbing sessions and events.">
+               Hier findest du unsere kommenden Klettertermine und Veranstaltungen.
+            </p>
+        </section>
+
+        <section class="events-list">
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">15</span>
+                    <span class="month">NOV</span>
+                </div>
+                <div class="event-info">
+                    <h3 class="multilang" data-de="Wöchentliches Bouldern" data-en="Weekly Bouldering">Wöchentliches Bouldern</h3>
+                    <p class="event-time">⏰ 18:00 - 20:00</p>
+                    <p class="event-location">📍 Boulder Base, Hauptstraße 42</p>
+                    <p class="event-description multilang" 
+                       data-de="Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!" 
+                       data-en="Our regular bouldering session for all levels. Come by and climb with us!">
+                       Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">22</span>
+                    <span class="month">NOV</span>
+                </div>
+                <div class="event-info">
+                    <h3 class="multilang" data-de="Wöchentliches Bouldern" data-en="Weekly Bouldering">Wöchentliches Bouldern</h3>
+                    <p class="event-time">⏰ 18:00 - 20:00</p>
+                    <p class="event-location">📍 Boulder Base, Hauptstraße 42</p>
+                    <p class="event-description multilang" 
+                       data-de="Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!" 
+                       data-en="Our regular bouldering session for all levels. Come by and climb with us!">
+                       Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card highlight">
+                <div class="event-date">
+                    <span class="day">29</span>
+                    <span class="month">NOV</span>
+                </div>
+                <div class="event-info">
+                    <h3 class="multilang" data-de="Outdoor-Klettern: Frankenjura" data-en="Outdoor Climbing: Frankenjura">Outdoor-Klettern: Frankenjura</h3>
+                    <p class="event-time">⏰ 09:00 - 17:00</p>
+                    <p class="event-location">📍 Treffpunkt: Uni Parkplatz</p>
+                    <p class="event-description multilang" 
+                       data-de="Ganztagesausflug zum Outdoor-Klettern in der Fränkischen Schweiz. Anmeldung erforderlich!" 
+                       data-en="Full-day outdoor climbing trip to Frankenjura. Registration required!">
+                       Ganztagesausflug zum Outdoor-Klettern in der Fränkischen Schweiz. Anmeldung erforderlich!
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">06</span>
+                    <span class="month">DEZ</span>
+                </div>
+                <div class="event-info">
+                    <h3 class="multilang" data-de="Hallenklettern für Anfänger" data-en="Indoor Climbing for Beginners">Hallenklettern für Anfänger</h3>
+                    <p class="event-time">⏰ 17:00 - 19:00</p>
+                    <p class="event-location">📍 Kletterzentrum, Bergstraße 15</p>
+                    <p class="event-description multilang" 
+                       data-de="Speziell für Anfänger! Wir zeigen dir die Grundlagen des Sicherns und Kletterns." 
+                       data-en="Especially for beginners! We'll show you the basics of belaying and climbing.">
+                       Speziell für Anfänger! Wir zeigen dir die Grundlagen des Sicherns und Kletterns.
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">13</span>
+                    <span class="month">DEZ</span>
+                </div>
+                <div class="event-info">
+                    <h3 class="multilang" data-de="Wöchentliches Bouldern" data-en="Weekly Bouldering">Wöchentliches Bouldern</h3>
+                    <p class="event-time">⏰ 18:00 - 20:00</p>
+                    <p class="event-location">📍 Boulder Base, Hauptstraße 42</p>
+                    <p class="event-description multilang" 
+                       data-de="Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!" 
+                       data-en="Our regular bouldering session for all levels. Come by and climb with us!">
+                       Unser regelmäßiges Bouldern für alle Levels. Komm vorbei und klettere mit uns!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-notice">
+            <h3 class="multilang" data-de="Hinweise" data-en="Notes">Hinweise</h3>
+            <ul>
+                <li class="multilang" 
+                    data-de="Alle Termine sind kostenlos für Mitglieder der AG" 
+                    data-en="All events are free for AG members">
+                    Alle Termine sind kostenlos für Mitglieder der AG
+                </li>
+                <li class="multilang" 
+                    data-de="Bitte bringe deine eigenen Kletterschuhe mit (können auch vor Ort ausgeliehen werden)" 
+                    data-en="Please bring your own climbing shoes (can also be rented on site)">
+                    Bitte bringe deine eigenen Kletterschuhe mit (können auch vor Ort ausgeliehen werden)
+                </li>
+                <li class="multilang" 
+                    data-de="Für Outdoor-Events ist eine vorherige Anmeldung erforderlich" 
+                    data-en="Pre-registration is required for outdoor events">
+                    Für Outdoor-Events ist eine vorherige Anmeldung erforderlich
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="footer-logo.svg" alt="Bouldern & Klettern AG" class="footer-logo">
+            <p>&copy; 2025 Bouldern & Klettern AG | <a href="impressum.html">Impressum</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
