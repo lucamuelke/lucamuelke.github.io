@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         currentLanguage = savedLanguage;
         updateLanguage();
     }
+    
+    // Filter out old events on the events page
+    filterOldEvents();
 });
 
 // Toggle between German and English
@@ -19,9 +22,15 @@ function toggleLanguage() {
 
 // Update all multilingual elements
 function updateLanguage() {
-    // Update flag icon
+    // Update flag icon and language text
     const flag = document.getElementById('flag');
-    flag.textContent = currentLanguage === 'de' ? '🇩🇪' : '🇬🇧';
+    const langText = document.getElementById('lang-text');
+    if (flag) {
+        flag.textContent = currentLanguage === 'de' ? '🇩🇪' : '🇬🇧';
+    }
+    if (langText) {
+        langText.textContent = currentLanguage === 'de' ? 'DE' : 'EN';
+    }
     
     // Update HTML lang attribute
     document.documentElement.lang = currentLanguage;
@@ -41,6 +50,26 @@ function updateLanguage() {
         const translation = link.getAttribute('data-' + currentLanguage);
         if (translation) {
             link.textContent = translation;
+        }
+    });
+}
+
+// Filter out events that have already passed
+function filterOldEvents() {
+    const eventCards = document.querySelectorAll('.event-card[data-event-date]');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to midnight for accurate date comparison
+    
+    eventCards.forEach(card => {
+        const eventDateStr = card.getAttribute('data-event-date');
+        if (eventDateStr) {
+            const eventDate = new Date(eventDateStr);
+            eventDate.setHours(0, 0, 0, 0);
+            
+            // Hide events that are in the past
+            if (eventDate < today) {
+                card.style.display = 'none';
+            }
         }
     });
 }
