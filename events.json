@@ -1,0 +1,62 @@
+{
+  "events": [
+    {
+      "date": "2025-11-29",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "title": {
+        "de": "Outdoor-Klettern: Frankenjura",
+        "en": "Outdoor Climbing: Frankenjura"
+      },
+      "location": {
+        "de": "Treffpunkt: Uni Parkplatz",
+        "en": "Meeting point: University parking lot"
+      },
+      "description": {
+        "de": "Ganztagesausflug zum Outdoor-Klettern in der Fränkischen Schweiz. Anmeldung erforderlich!",
+        "en": "Full-day outdoor climbing trip to Frankenjura. Registration required!"
+      },
+      "highlight": true,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2025-12-06",
+      "startTime": "17:00",
+      "endTime": "19:00",
+      "title": {
+        "de": "Hallenklettern für Anfänger",
+        "en": "Indoor Climbing for Beginners"
+      },
+      "location": {
+        "de": "Kletterzentrum, Bergstraße 15",
+        "en": "Climbing center, Bergstraße 15"
+      },
+      "description": {
+        "de": "Speziell für Anfänger! Wir zeigen dir die Grundlagen des Sicherns und Kletterns.",
+        "en": "Especially for beginners! We'll show you the basics of belaying and climbing."
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    }
+  ],
+  "autoEvents": {
+    "openBouldering": {
+      "dayOfWeek": 4,
+      "startTime": "19:00",
+      "endTime": "23:00",
+      "title": {
+        "de": "Open Bouldering",
+        "en": "Open Bouldering"
+      },
+      "location": {
+        "de": "Nordwandhalle, Zum Handweiser 15, 21129 Hamburg",
+        "en": "Nordwandhalle, Zum Handweiser 15, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Unser regelmäßiges Open Bouldering für alle Levels. Komm vorbei und klettere mit uns!",
+        "en": "Our regular open bouldering session for all levels. Come by and climb with us!"
+      },
+      "highlight": false
+    }
+  }
+}
