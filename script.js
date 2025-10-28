@@ -189,7 +189,7 @@ function createEventCard(event) {
     card.setAttribute('data-event-date', event.date);
     card.setAttribute('data-event-type', event.type);
     
-    // Parse date
+    // Parse start date
     const eventDate = new Date(event.date);
     const day = eventDate.getDate();
     const monthNames = {
@@ -198,21 +198,74 @@ function createEventCard(event) {
     };
     const month = monthNames[currentLanguage][eventDate.getMonth()];
     
-    // Get weekday name
-    const weekdayNames = {
-        de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-        en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    };
-    const weekday = weekdayNames[currentLanguage][eventDate.getDay()];
+    // Check if multi-day event
+    const isMultiDay = event.endDate && event.endDate !== event.date;
+    let dateRangeDisplay = '';
+    let weekdayDisplay = '';
+    
+    if (isMultiDay) {
+        const endDate = new Date(event.endDate);
+        const endDay = endDate.getDate();
+        const endMonth = monthNames[currentLanguage][endDate.getMonth()];
+        
+        // Format date range
+        if (eventDate.getMonth() === endDate.getMonth()) {
+            // Same month: "29-30 NOV"
+            dateRangeDisplay = `${day}-${endDay}`;
+        } else {
+            // Different months: "29 NOV - 1 DEZ"
+            dateRangeDisplay = `${day} ${month} - ${endDay} ${endMonth}`;
+        }
+        
+        // Get weekday range
+        const weekdayNames = {
+            de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        };
+        const startWeekday = weekdayNames[currentLanguage][eventDate.getDay()];
+        const endWeekday = weekdayNames[currentLanguage][endDate.getDay()];
+        weekdayDisplay = `${startWeekday} - ${endWeekday}`;
+    } else {
+        // Single day event
+        const weekdayNames = {
+            de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        };
+        weekdayDisplay = weekdayNames[currentLanguage][eventDate.getDay()];
+    }
+    
+    // Build date display HTML
+    let dateDisplayHTML;
+    if (isMultiDay && eventDate.getMonth() !== new Date(event.endDate).getMonth()) {
+        // Different months - show full range in text
+        dateDisplayHTML = `
+            <div class="event-date multi-day">
+                <span class="date-range">${dateRangeDisplay}</span>
+            </div>
+        `;
+    } else if (isMultiDay) {
+        // Same month - show range with month
+        dateDisplayHTML = `
+            <div class="event-date multi-day">
+                <span class="day-range">${dateRangeDisplay}</span>
+                <span class="month">${month}</span>
+            </div>
+        `;
+    } else {
+        // Single day
+        dateDisplayHTML = `
+            <div class="event-date">
+                <span class="day">${day}</span>
+                <span class="month">${month}</span>
+            </div>
+        `;
+    }
     
     card.innerHTML = `
-        <div class="event-date">
-            <span class="day">${day}</span>
-            <span class="month">${month}</span>
-        </div>
+        ${dateDisplayHTML}
         <div class="event-info">
             <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
-            <p class="event-weekday multilang" data-de="${weekdayNames.de[eventDate.getDay()]}" data-en="${weekdayNames.en[eventDate.getDay()]}">${weekday}</p>
+            <p class="event-weekday">${weekdayDisplay}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
             <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
             <p class="event-description multilang" 
