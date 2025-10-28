@@ -63,8 +63,8 @@ Add a new event object to the `events` array:
 - **`description`** (required): Description with `de` and `en` translations
 - **`highlight`** (optional): Set to `true` to make the event stand out with special styling
 - **`allowAutoEvent`** (optional, default: `false`): 
-  - `false`: If this manual event is on a Thursday, it will suppress the auto-generated "Open Bouldering" event
-  - `true`: Both the manual event and auto-generated event will be shown
+  - `false`: If this manual event is on the same day as an auto-generated event (e.g., a Thursday with Open Bouldering), the auto-generated event will be suppressed
+  - `true`: Both the manual event and any auto-generated event on the same day will be shown
 
 ## Auto-Generated Events Configuration
 
@@ -105,7 +105,7 @@ Currently configured to generate "Open Bouldering" events every Thursday:
 2. **Auto-Generated Events**: Displayed for the next month only
 3. **Conflict Resolution**: 
    - If a manual event falls on the same day as an auto-generated event and `allowAutoEvent: false`, only the manual event is shown
-   - If `allowAutoEvent: true`, both events are shown
+   - If `allowAutoEvent: true`, both events are shown on the same day
 
 ## Examples
 
