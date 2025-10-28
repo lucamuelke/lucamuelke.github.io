@@ -239,7 +239,7 @@ main {
     align-items: center;
     gap: 40px;
     margin: 30px 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .telegram-qr {
