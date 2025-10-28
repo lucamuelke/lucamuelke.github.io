@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouldern & Klettern AG</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Banner/Navigation -->
+    <header class="banner">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🧗</span>
+                <span class="logo-text">Bouldern & Klettern AG</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active" data-de="Start" data-en="Home">Start</a></li>
+                    <li><a href="events.html" data-de="Termine" data-en="Events">Termine</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
+                </ul>
+            </nav>
+            <button class="language-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
+                <span id="flag">🇩🇪</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="hero">
+            <h1 class="multilang" data-de="Willkommen bei der Bouldern & Klettern AG" data-en="Welcome to the Bouldering & Climbing Group">Willkommen bei der Bouldern & Klettern AG</h1>
+            <p class="subtitle multilang" data-de="Gemeinsam hoch hinaus!" data-en="Reaching new heights together!">Gemeinsam hoch hinaus!</p>
+        </section>
+
+        <section class="content">
+            <div class="about">
+                <h2 class="multilang" data-de="Über uns" data-en="About Us">Über uns</h2>
+                <p class="multilang" 
+                   data-de="Wir sind eine Gruppe von Studierenden, die sich für Bouldern und Klettern begeistern. Egal ob Anfänger oder Fortgeschrittene – bei uns ist jeder willkommen! Wir treffen uns regelmäßig zum gemeinsamen Klettern, organisieren Ausflüge zu verschiedenen Kletterhallen und Outdoor-Spots, und helfen uns gegenseitig, besser zu werden." 
+                   data-en="We are a group of students passionate about bouldering and climbing. Whether you're a beginner or advanced – everyone is welcome! We meet regularly for climbing sessions, organize trips to various climbing gyms and outdoor spots, and help each other improve.">
+                   Wir sind eine Gruppe von Studierenden, die sich für Bouldern und Klettern begeistern. Egal ob Anfänger oder Fortgeschrittene – bei uns ist jeder willkommen! Wir treffen uns regelmäßig zum gemeinsamen Klettern, organisieren Ausflüge zu verschiedenen Kletterhallen und Outdoor-Spots, und helfen uns gegenseitig, besser zu werden.
+                </p>
+            </div>
+
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3 class="multilang" data-de="🧗 Bouldern" data-en="🧗 Bouldering">🧗 Bouldern</h3>
+                    <p class="multilang" 
+                       data-de="Klettern ohne Seil in Absprunghöhe. Perfekt für Einsteiger und um Kraft aufzubauen." 
+                       data-en="Climbing without ropes at safe heights. Perfect for beginners and building strength.">
+                       Klettern ohne Seil in Absprunghöhe. Perfekt für Einsteiger und um Kraft aufzubauen.
+                    </p>
+                </div>
+                <div class="info-box">
+                    <h3 class="multilang" data-de="🪢 Klettern" data-en="🪢 Climbing">🪢 Klettern</h3>
+                    <p class="multilang" 
+                       data-de="Gesichertes Klettern an hohen Wänden. Wir lernen gemeinsam die verschiedenen Techniken." 
+                       data-en="Rope climbing on tall walls. We learn different techniques together.">
+                       Gesichertes Klettern an hohen Wänden. Wir lernen gemeinsam die verschiedenen Techniken.
+                    </p>
+                </div>
+                <div class="info-box">
+                    <h3 class="multilang" data-de="🏔️ Ausflüge" data-en="🏔️ Trips">🏔️ Ausflüge</h3>
+                    <p class="multilang" 
+                       data-de="Regelmäßige Trips zu verschiedenen Kletterhallen und Outdoor-Spots in der Region." 
+                       data-en="Regular trips to various climbing gyms and outdoor spots in the region.">
+                       Regelmäßige Trips zu verschiedenen Kletterhallen und Outdoor-Spots in der Region.
+                    </p>
+                </div>
+            </div>
+
+            <div class="join-section">
+                <h2 class="multilang" data-de="Mach mit!" data-en="Join Us!">Mach mit!</h2>
+                <p class="multilang" 
+                   data-de="Interesse? Schau bei unseren nächsten Terminen vorbei oder schreib uns eine Nachricht!" 
+                   data-en="Interested? Check out our upcoming events or send us a message!">
+                   Interesse? Schau bei unseren nächsten Terminen vorbei oder schreib uns eine Nachricht!
+                </p>
+                <a href="events.html" class="btn multilang" data-de="Zu den Terminen" data-en="View Events">Zu den Terminen</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bouldern & Klettern AG | <a href="impressum.html">Impressum</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
