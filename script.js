@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateLanguage();
     }
     
-    // Filter out old events on the events page
-    filterOldEvents();
+    // Load and display events dynamically on the events page
+    loadEvents();
 });
 
 // Toggle between German and English
@@ -53,30 +53,172 @@ function updateLanguage() {
             link.textContent = translation;
         }
     });
+    
+    // Update month names in event cards
+    updateEventMonths();
 }
 
-// Filter out events that have already passed
-function filterOldEvents() {
+// Update month names in dynamically generated event cards
+function updateEventMonths() {
+    const monthNames = {
+        de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
+        en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    };
+    
     const eventCards = document.querySelectorAll('.event-card[data-event-date]');
-    
-    // Only process if there are event cards on the page
-    if (eventCards.length === 0) {
-        return;
-    }
-    
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time to midnight for accurate date comparison
-    
     eventCards.forEach(card => {
         const eventDateStr = card.getAttribute('data-event-date');
         if (eventDateStr) {
             const eventDate = new Date(eventDateStr);
-            eventDate.setHours(0, 0, 0, 0);
-            
-            // Hide events that are in the past
-            if (eventDate < today) {
-                card.style.display = 'none';
+            const month = monthNames[currentLanguage][eventDate.getMonth()];
+            const monthSpan = card.querySelector('.event-date .month');
+            if (monthSpan) {
+                monthSpan.textContent = month;
             }
         }
     });
+}
+
+// Load and display events
+async function loadEvents() {
+    const eventsContainer = document.querySelector('.events-list');
+    
+    // Only process if we're on the events page
+    if (!eventsContainer) {
+        return;
+    }
+    
+    try {
+        const response = await fetch('events.json');
+        const data = await response.json();
+        
+        // Generate all events (manual + auto-generated)
+        const allEvents = generateAllEvents(data);
+        
+        // Clear existing events
+        eventsContainer.innerHTML = '';
+        
+        // Render events
+        allEvents.forEach(event => {
+            const eventCard = createEventCard(event);
+            eventsContainer.appendChild(eventCard);
+        });
+        
+        // Update language for dynamically created content
+        updateLanguage();
+    } catch (error) {
+        console.error('Error loading events:', error);
+        eventsContainer.innerHTML = '<p class="error">Fehler beim Laden der Events / Error loading events</p>';
+    }
+}
+
+// Generate all events (manual + auto-generated)
+function generateAllEvents(data) {
+    const now = new Date();
+    const oneMonthFromNow = new Date();
+    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
+    
+    const allEvents = [];
+    
+    // Add manual events (show until end time has passed)
+    if (data.events) {
+        data.events.forEach(event => {
+            const eventEndDateTime = new Date(`${event.date}T${event.endTime}`);
+            if (eventEndDateTime >= now) {
+                allEvents.push({
+                    ...event,
+                    type: 'manual',
+                    dateTime: new Date(`${event.date}T${event.startTime}`)
+                });
+            }
+        });
+    }
+    
+    // Generate auto events (Open Bouldering on Thursdays)
+    if (data.autoEvents && data.autoEvents.openBouldering) {
+        const autoEvent = data.autoEvents.openBouldering;
+        const currentDate = new Date(now);
+        currentDate.setHours(0, 0, 0, 0);
+        
+        // Generate events for the next month
+        while (currentDate <= oneMonthFromNow) {
+            // Check if it's Thursday (4 = Thursday)
+            if (currentDate.getDay() === autoEvent.dayOfWeek) {
+                const eventDateStr = currentDate.toISOString().split('T')[0];
+                const eventDateTime = new Date(`${eventDateStr}T${autoEvent.startTime}`);
+                
+                // Check if this Thursday has a conflicting manual event
+                const hasConflict = allEvents.some(manualEvent => {
+                    return manualEvent.date === eventDateStr && !manualEvent.allowAutoEvent;
+                });
+                
+                // Only add if no conflict or if event is in the future
+                if (!hasConflict && eventDateTime >= now) {
+                    allEvents.push({
+                        date: eventDateStr,
+                        startTime: autoEvent.startTime,
+                        endTime: autoEvent.endTime,
+                        title: autoEvent.title,
+                        location: autoEvent.location,
+                        description: autoEvent.description,
+                        highlight: autoEvent.highlight,
+                        type: 'auto',
+                        dateTime: eventDateTime
+                    });
+                }
+            }
+            
+            // Move to next day
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    }
+    
+    // Sort events by date and time
+    allEvents.sort((a, b) => a.dateTime - b.dateTime);
+    
+    return allEvents;
+}
+
+// Create event card HTML element
+function createEventCard(event) {
+    const card = document.createElement('div');
+    card.className = 'event-card' + (event.highlight ? ' highlight' : '');
+    card.setAttribute('data-event-date', event.date);
+    card.setAttribute('data-event-type', event.type);
+    
+    // Parse date
+    const eventDate = new Date(event.date);
+    const day = eventDate.getDate();
+    const monthNames = {
+        de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
+        en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    };
+    const month = monthNames[currentLanguage][eventDate.getMonth()];
+    
+    // Get weekday name
+    const weekdayNames = {
+        de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    };
+    const weekday = weekdayNames[currentLanguage][eventDate.getDay()];
+    
+    card.innerHTML = `
+        <div class="event-date">
+            <span class="day">${day}</span>
+            <span class="month">${month}</span>
+        </div>
+        <div class="event-info">
+            <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
+            <p class="event-weekday multilang" data-de="${weekdayNames.de[eventDate.getDay()]}" data-en="${weekdayNames.en[eventDate.getDay()]}">${weekday}</p>
+            <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
+            <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
+            <p class="event-description multilang" 
+               data-de="${event.description.de}" 
+               data-en="${event.description.en}">
+               ${event.description[currentLanguage]}
+            </p>
+        </div>
+    `;
+    
+    return card;
 }
