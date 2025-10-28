@@ -200,6 +200,16 @@ function createEventCard(event) {
     };
     const month = monthNames[currentLanguage][eventDate.getMonth()];
     
+    // Weekday name constants
+    const weekdayNamesFull = {
+        de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    };
+    const weekdayNamesShort = {
+        de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+        en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    };
+    
     // Check if multi-day event and validate endDate
     const isMultiDay = event.endDate && event.endDate !== event.date;
     let dateRangeDisplay = '';
@@ -214,12 +224,8 @@ function createEventCard(event) {
         if (isNaN(endDate.getTime()) || endDate < eventDate) {
             console.warn(`Invalid endDate for event: ${event.title.de}. Treating as single-day event.`);
             // Treat as single-day event
-            const weekdayNames = {
-                de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-                en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-            };
-            weekdayDisplayDe = weekdayNames.de[eventDate.getDay()];
-            weekdayDisplayEn = weekdayNames.en[eventDate.getDay()];
+            weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
+            weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
         } else {
             const endDay = endDate.getDate();
             const endMonth = monthNames[currentLanguage][endDate.getMonth()];
@@ -233,24 +239,18 @@ function createEventCard(event) {
                 dateRangeDisplay = `${day} ${month} - ${endDay} ${endMonth}`;
             }
             
-            // Get weekday range for both languages
-            const weekdayNamesDe = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-            const weekdayNamesEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const startWeekdayDe = weekdayNamesDe[eventDate.getDay()];
-            const endWeekdayDe = weekdayNamesDe[endDate.getDay()];
-            const startWeekdayEn = weekdayNamesEn[eventDate.getDay()];
-            const endWeekdayEn = weekdayNamesEn[endDate.getDay()];
+            // Get weekday range for both languages (abbreviated)
+            const startWeekdayDe = weekdayNamesShort.de[eventDate.getDay()];
+            const endWeekdayDe = weekdayNamesShort.de[endDate.getDay()];
+            const startWeekdayEn = weekdayNamesShort.en[eventDate.getDay()];
+            const endWeekdayEn = weekdayNamesShort.en[endDate.getDay()];
             weekdayDisplayDe = `${startWeekdayDe} - ${endWeekdayDe}`;
             weekdayDisplayEn = `${startWeekdayEn} - ${endWeekdayEn}`;
         }
     } else {
         // Single day event
-        const weekdayNames = {
-            de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-            en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        };
-        weekdayDisplayDe = weekdayNames.de[eventDate.getDay()];
-        weekdayDisplayEn = weekdayNames.en[eventDate.getDay()];
+        weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
+        weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
     }
     
     // Build date display HTML
@@ -284,7 +284,7 @@ function createEventCard(event) {
         ${dateDisplayHTML}
         <div class="event-info">
             <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
-            <p class="event-weekday multilang" data-de="${weekdayDisplayDe}" data-en="${weekdayDisplayEn}">${currentLanguage === 'de' ? weekdayDisplayDe : weekdayDisplayEn}</p>
+            <p class="event-weekday multilang" data-de="${weekdayDisplayDe}" data-en="${weekdayDisplayEn}">${weekdayDisplayDe}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
             <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
             <p class="event-description multilang" 
