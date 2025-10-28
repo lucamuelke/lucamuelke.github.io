@@ -208,6 +208,10 @@ main {
     margin-bottom: 25px;
 }
 
+.join-section > .btn {
+    margin-bottom: 30px;
+}
+
 /* Telegram Section */
 .telegram-section {
     background: white;
