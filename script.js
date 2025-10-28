@@ -89,7 +89,8 @@ async function loadEvents() {
     }
     
     try {
-        const response = await fetch('events.json');
+        // Add cache-busting parameter to ensure fresh data is fetched
+        const response = await fetch(`events.json?v=${Date.now()}`);
         const data = await response.json();
         
         // Generate all events (manual + auto-generated)
