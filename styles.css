@@ -403,8 +403,9 @@ footer {
 footer .container {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
 }
 
@@ -413,7 +414,16 @@ footer .container {
     width: auto;
 }
 
+.footer-logo-left {
+    order: 1;
+}
+
+.footer-logo-right {
+    order: 3;
+}
+
 footer p {
+    order: 2;
     margin: 0;
 }
 
@@ -471,6 +481,24 @@ footer a:hover {
 
     .page-header h1 {
         font-size: 2rem;
+    }
+
+    footer .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .footer-logo-left,
+    .footer-logo-right {
+        order: 1;
+    }
+
+    footer p {
+        order: 2;
+        width: 100%;
+        text-align: center;
     }
 }
 
