@@ -91,12 +91,7 @@ async function loadEvents() {
     try {
         // Force fetch from network, bypassing all caches
         const response = await fetch('events.json', {
-            cache: 'no-store',
-            headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                'Pragma': 'no-cache',
-                'Expires': '0'
-            }
+            cache: 'no-store'
         });
         const data = await response.json();
         
