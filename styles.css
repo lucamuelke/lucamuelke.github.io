@@ -484,14 +484,21 @@ footer a:hover {
     }
 
     footer .container {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 20px;
+        justify-content: center;
     }
 
     .footer-logo-left,
-    .footer-logo-right,
+    .footer-logo-right {
+        order: 1;
+    }
+
     footer p {
-        order: initial;
+        order: 2;
+        width: 100%;
+        text-align: center;
     }
 }
 
