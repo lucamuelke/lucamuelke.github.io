@@ -26,7 +26,8 @@ function updateLanguage() {
     const flag = document.getElementById('flag');
     const langText = document.getElementById('lang-text');
     if (flag) {
-        flag.textContent = currentLanguage === 'de' ? '🇩🇪' : '🇬🇧';
+        flag.src = currentLanguage === 'de' ? 'flag-de.svg' : 'flag-gb.svg';
+        flag.alt = currentLanguage === 'de' ? 'German Flag' : 'UK Flag';
     }
     if (langText) {
         langText.textContent = currentLanguage === 'de' ? 'DE' : 'EN';
