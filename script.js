@@ -195,6 +195,13 @@ function createEventCard(event) {
     };
     const month = monthNames[currentLanguage][eventDate.getMonth()];
     
+    // Get weekday name
+    const weekdayNames = {
+        de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    };
+    const weekday = weekdayNames[currentLanguage][eventDate.getDay()];
+    
     card.innerHTML = `
         <div class="event-date">
             <span class="day">${day}</span>
@@ -202,6 +209,7 @@ function createEventCard(event) {
         </div>
         <div class="event-info">
             <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
+            <p class="event-weekday multilang" data-de="${weekdayNames.de[eventDate.getDay()]}" data-en="${weekdayNames.en[eventDate.getDay()]}">${weekday}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
             <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
             <p class="event-description multilang" 

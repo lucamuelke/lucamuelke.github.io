@@ -312,6 +312,14 @@ main {
     margin-bottom: 10px;
 }
 
+.event-weekday {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 8px;
+    margin-top: -5px;
+}
+
 .event-time,
 .event-location {
     color: #666;
