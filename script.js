@@ -126,7 +126,9 @@ function generateAllEvents(data) {
     // Add manual events (show until end time has passed)
     if (data.events) {
         data.events.forEach(event => {
-            const eventEndDateTime = new Date(`${event.date}T${event.endTime}`);
+            // For multi-day events, check against endDate; for single-day, check against date
+            const finalDate = event.endDate || event.date;
+            const eventEndDateTime = new Date(`${finalDate}T${event.endTime}`);
             if (eventEndDateTime >= now) {
                 allEvents.push({
                     ...event,
@@ -189,7 +191,7 @@ function createEventCard(event) {
     card.setAttribute('data-event-date', event.date);
     card.setAttribute('data-event-type', event.type);
     
-    // Parse date
+    // Parse start date
     const eventDate = new Date(event.date);
     const day = eventDate.getDate();
     const monthNames = {
@@ -198,21 +200,91 @@ function createEventCard(event) {
     };
     const month = monthNames[currentLanguage][eventDate.getMonth()];
     
-    // Get weekday name
-    const weekdayNames = {
+    // Weekday name constants
+    const weekdayNamesFull = {
         de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
         en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     };
-    const weekday = weekdayNames[currentLanguage][eventDate.getDay()];
+    const weekdayNamesShort = {
+        de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+        en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    };
+    
+    // Check if multi-day event and validate endDate
+    const isMultiDay = event.endDate && event.endDate !== event.date;
+    let dateRangeDisplay = '';
+    let weekdayDisplayDe = '';
+    let weekdayDisplayEn = '';
+    let endDate = null;
+    
+    if (isMultiDay) {
+        endDate = new Date(event.endDate);
+        
+        // Validate endDate
+        if (isNaN(endDate.getTime()) || endDate < eventDate) {
+            console.warn(`Invalid endDate for event: ${event.title.de}. Treating as single-day event.`);
+            // Treat as single-day event
+            weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
+            weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
+        } else {
+            const endDay = endDate.getDate();
+            const endMonth = monthNames[currentLanguage][endDate.getMonth()];
+            
+            // Format date range
+            if (eventDate.getMonth() === endDate.getMonth()) {
+                // Same month: "29-30 NOV"
+                dateRangeDisplay = `${day}-${endDay}`;
+            } else {
+                // Different months: "29 NOV - 1 DEZ"
+                dateRangeDisplay = `${day} ${month} - ${endDay} ${endMonth}`;
+            }
+            
+            // Get weekday range for both languages (abbreviated)
+            const startWeekdayDe = weekdayNamesShort.de[eventDate.getDay()];
+            const endWeekdayDe = weekdayNamesShort.de[endDate.getDay()];
+            const startWeekdayEn = weekdayNamesShort.en[eventDate.getDay()];
+            const endWeekdayEn = weekdayNamesShort.en[endDate.getDay()];
+            weekdayDisplayDe = `${startWeekdayDe} - ${endWeekdayDe}`;
+            weekdayDisplayEn = `${startWeekdayEn} - ${endWeekdayEn}`;
+        }
+    } else {
+        // Single day event
+        weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
+        weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
+    }
+    
+    // Build date display HTML
+    let dateDisplayHTML;
+    if (isMultiDay && endDate && eventDate.getMonth() !== endDate.getMonth()) {
+        // Different months - show full range in text
+        dateDisplayHTML = `
+            <div class="event-date multi-day">
+                <span class="date-range">${dateRangeDisplay}</span>
+            </div>
+        `;
+    } else if (isMultiDay && endDate) {
+        // Same month - show range with month
+        dateDisplayHTML = `
+            <div class="event-date multi-day">
+                <span class="day-range">${dateRangeDisplay}</span>
+                <span class="month">${month}</span>
+            </div>
+        `;
+    } else {
+        // Single day
+        dateDisplayHTML = `
+            <div class="event-date">
+                <span class="day">${day}</span>
+                <span class="month">${month}</span>
+            </div>
+        `;
+    }
     
     card.innerHTML = `
-        <div class="event-date">
-            <span class="day">${day}</span>
-            <span class="month">${month}</span>
-        </div>
+        ${dateDisplayHTML}
         <div class="event-info">
             <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
-            <p class="event-weekday multilang" data-de="${weekdayNames.de[eventDate.getDay()]}" data-en="${weekdayNames.en[eventDate.getDay()]}">${weekday}</p>
+            <p class="event-weekday multilang" data-de="${weekdayDisplayDe}" data-en="${weekdayDisplayEn}">${weekdayDisplayDe}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
             <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
             <p class="event-description multilang" 

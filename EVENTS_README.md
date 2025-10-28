@@ -55,13 +55,14 @@ Add a new event object to the `events` array:
 
 ### Field Descriptions
 
-- **`date`** (required): Event date in `YYYY-MM-DD` format
+- **`date`** (required): Event start date in `YYYY-MM-DD` format
+- **`endDate`** (optional): Event end date in `YYYY-MM-DD` format. If provided, creates a multi-day event spanning from `date` to `endDate` (inclusive)
 - **`startTime`** (required): Start time in `HH:MM` format (24-hour)
 - **`endTime`** (required): End time in `HH:MM` format (24-hour)
 - **`title`** (required): Event title with `de` (German) and `en` (English) translations
 - **`location`** (required): Location with `de` and `en` translations
 - **`description`** (required): Description with `de` and `en` translations
-- **`highlight`** (optional): Set to `true` to make the event stand out with special styling
+- **`highlight`** (optional): Set to `true` to make the event stand out with special styling (golden background, borders, glowing effect, and animated star icon)
 - **`allowAutoEvent`** (optional, default: `false`): 
   - `false`: If this manual event is on the same day as an auto-generated event (e.g., a Thursday with Open Bouldering), the auto-generated event will be suppressed
   - `true`: Both the manual event and any auto-generated event on the same day will be shown
@@ -179,7 +180,57 @@ Result: On Thursday Nov 14, both "Beginner Training" and "Open Bouldering" are s
   "allowAutoEvent": false
 }
 ```
-Result: This event appears with special highlighting to make it stand out.
+Result: This event appears with special highlighting (golden background, borders, glowing effect, and animated star) to make it stand out.
+
+### Example 4: Multi-Day Event (Same Month)
+```json
+{
+  "date": "2025-11-28",
+  "endDate": "2025-11-30",
+  "startTime": "09:00",
+  "endTime": "18:00",
+  "title": {
+    "de": "Kletter-Wochenende",
+    "en": "Climbing Weekend"
+  },
+  "location": {
+    "de": "Berghotel Alpen",
+    "en": "Mountain Hotel Alps"
+  },
+  "description": {
+    "de": "Drei Tage voller Kletterabenteuer in den Alpen!",
+    "en": "Three days full of climbing adventures in the Alps!"
+  },
+  "highlight": false,
+  "allowAutoEvent": false
+}
+```
+Result: Shows "28-30 NOV" in the date box and "Fr - So" as the weekday range.
+
+### Example 5: Multi-Day Event (Spanning Multiple Months)
+```json
+{
+  "date": "2025-11-29",
+  "endDate": "2025-12-01",
+  "startTime": "09:00",
+  "endTime": "17:00",
+  "title": {
+    "de": "Outdoor-Klettern: Ith",
+    "en": "Outdoor Climbing: Ith"
+  },
+  "location": {
+    "de": "Treffpunkt: Uni Parkplatz",
+    "en": "Meeting point: University parking lot"
+  },
+  "description": {
+    "de": "Ganztagesausflug zum Outdoor-Klettern in den Ith. Anmeldung erforderlich!",
+    "en": "Full-day outdoor climbing trip to Ith. Registration required!"
+  },
+  "highlight": true,
+  "allowAutoEvent": false
+}
+```
+Result: Shows "29 NOV - 1 DEZ" in the date box and "Sa - Mo" as the weekday range.
 
 ## Maintenance Tips
 
@@ -187,9 +238,11 @@ Result: This event appears with special highlighting to make it stand out.
 
 2. **Date Format**: Always use `YYYY-MM-DD` format for dates and `HH:MM` (24-hour) for times.
 
-3. **Testing Changes**: After editing `events.json`, refresh the events page to see your changes immediately.
+3. **Multi-Day Events**: Use the optional `endDate` field to create events spanning multiple days. The date range will be displayed automatically.
 
-4. **Bilingual Content**: Always provide both German (`de`) and English (`en`) translations for all text fields.
+4. **Testing Changes**: After editing `events.json`, refresh the events page to see your changes immediately.
+
+5. **Bilingual Content**: Always provide both German (`de`) and English (`en`) translations for all text fields.
 
 ## Troubleshooting
 
@@ -197,6 +250,7 @@ Result: This event appears with special highlighting to make it stand out.
 - Check that the date format is correct (`YYYY-MM-DD`)
 - Verify that the event's end time hasn't passed
 - Ensure the JSON syntax is valid (use a JSON validator if needed)
+- For multi-day events, ensure `endDate` is after or equal to `date`
 
 **Auto-events not generating?**
 - Auto-events only generate for the next month
@@ -206,3 +260,8 @@ Result: This event appears with special highlighting to make it stand out.
 **Language not switching?**
 - Ensure all text fields have both `de` and `en` properties
 - Check browser console for any JavaScript errors
+
+**Multi-day event not displaying correctly?**
+- Verify that `endDate` is in `YYYY-MM-DD` format
+- Ensure `endDate` is on or after the `date` field
+- Check that both dates are valid calendar dates
