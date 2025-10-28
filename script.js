@@ -57,6 +57,12 @@ function updateLanguage() {
 // Filter out events that have already passed
 function filterOldEvents() {
     const eventCards = document.querySelectorAll('.event-card[data-event-date]');
+    
+    // Only process if there are event cards on the page
+    if (eventCards.length === 0) {
+        return;
+    }
+    
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reset time to midnight for accurate date comparison
     
