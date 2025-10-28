@@ -403,14 +403,27 @@ footer {
 footer .container {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
 }
 
 .footer-logo {
     height: 50px;
     width: auto;
+}
+
+.footer-logo-left {
+    order: 1;
+}
+
+.footer-logo-right {
+    order: 3;
+}
+
+footer p {
+    order: 2;
 }
 
 footer p {
@@ -471,6 +484,17 @@ footer a:hover {
 
     .page-header h1 {
         font-size: 2rem;
+    }
+
+    footer .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-logo-left,
+    .footer-logo-right,
+    footer p {
+        order: initial;
     }
 }
 
