@@ -5,16 +5,16 @@
       "startTime": "09:00",
       "endTime": "17:00",
       "title": {
-        "de": "Outdoor-Klettern: Frankenjura",
-        "en": "Outdoor Climbing: Frankenjura"
+        "de": "Outdoor-Klettern: Ith",
+        "en": "Outdoor Climbing: Ith"
       },
       "location": {
         "de": "Treffpunkt: Uni Parkplatz",
         "en": "Meeting point: University parking lot"
       },
       "description": {
-        "de": "Ganztagesausflug zum Outdoor-Klettern in der Fränkischen Schweiz. Anmeldung erforderlich!",
-        "en": "Full-day outdoor climbing trip to Frankenjura. Registration required!"
+        "de": "Ganztagesausflug zum Outdoor-Klettern in den Ith. Anmeldung erforderlich!",
+        "en": "Full-day outdoor climbing trip to Ith. Registration required!"
       },
       "highlight": true,
       "allowAutoEvent": false
@@ -41,20 +41,20 @@
   ],
   "autoEvents": {
     "openBouldering": {
-      "dayOfWeek": 4,
+      "dayOfWeek": 5,
       "startTime": "19:00",
       "endTime": "23:00",
       "title": {
-        "de": "Open Bouldering",
+        "de": "Offenes Bouldern",
         "en": "Open Bouldering"
       },
       "location": {
-        "de": "Nordwandhalle, Zum Handweiser 15, 21129 Hamburg",
-        "en": "Nordwandhalle, Zum Handweiser 15, 21129 Hamburg"
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
       },
       "description": {
-        "de": "Unser regelmäßiges Open Bouldering für alle Levels. Komm vorbei und klettere mit uns!",
-        "en": "Our regular open bouldering session for all levels. Come by and climb with us!"
+        "de": "Unser regelmäßiges offenes Boulder für alle Levels. Reduzierter Eintrittspreis für AG Mitglieder. Komm vorbei und klettere mit uns!",
+        "en": "Our regular open bouldering session for all levels. Discouted entrance fee for AG members. Come by and climb with us!"
       },
       "highlight": false
     }
