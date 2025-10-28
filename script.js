@@ -41,7 +41,12 @@ function updateLanguage() {
     elements.forEach(element => {
         const translation = element.getAttribute('data-' + currentLanguage);
         if (translation) {
-            element.textContent = translation;
+            // Use innerHTML if the translation contains HTML tags, otherwise use textContent
+            if (translation.includes('<')) {
+                element.innerHTML = translation;
+            } else {
+                element.textContent = translation;
+            }
         }
     });
     
