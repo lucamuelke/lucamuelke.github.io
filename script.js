@@ -49,7 +49,7 @@ function createFooter() {
             <a href="https://tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-left">
                 <img src="TUHH_logo_rgb.svg" alt="TUHH Logo" class="footer-logo">
             </a>
-            <p class="footer-top-text">&copy; 2025 BoulderING AG | <a href="impressum.html">Impressum</a></p>
+            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="impressum.html">Impressum</a></p>
             <a href="https://www.asta.tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-right">
                 <img src="astaLogo.svg" alt="AStA Logo" class="footer-logo">
             </a>
@@ -288,7 +288,7 @@ function createEventCard(event) {
     
     if (isMultiDay) {
         endDate = new Date(event.endDate);
-        
+
         // Validate endDate
         if (isNaN(endDate.getTime()) || endDate < eventDate) {
             console.warn(`Invalid endDate for event: ${event.title.de}. Treating as single-day event.`);

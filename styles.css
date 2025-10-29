@@ -597,20 +597,20 @@ footer a:hover {
         gap: 15px;
     }
 
-    .footer-top-text {
-        order: 1;       /* top element goes first */
-        flex: 1 1 100%; /* full width */
-        text-align: center; /* optional for nicer look */
+    .footer-text {
+        order: 3;
+        flex: 1 1 100%;
+        text-align: center;
     }
 
     .footer-logo-left {
-        order: 2;       /* bottom left */
-        flex: 1 1 50%;  /* half width */
+        order: 1;
+        flex: 1 1 50%;
     }
 
     .footer-logo-right {
-        order: 3;       /* bottom right */
-        flex: 1 1 50%;  /* half width */
+        order: 2;
+        flex: 1 1 50%;
     }
 
     .logo-text {
