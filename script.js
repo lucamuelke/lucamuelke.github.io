@@ -49,7 +49,7 @@ function createFooter() {
             <a href="https://tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-left">
                 <img src="TUHH_logo_rgb.svg" alt="TUHH Logo" class="footer-logo">
             </a>
-            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a></p>
+            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="impressum.html" class="multilang" data-de="Impressum" data-en="Imprint">Impressum</a></p>
             <a href="https://www.asta.tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-right">
                 <img src="astaLogo.svg" alt="AStA Logo" class="footer-logo">
             </a>
