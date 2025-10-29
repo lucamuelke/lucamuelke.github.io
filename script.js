@@ -185,8 +185,8 @@ async function loadEvents() {
 // Generate all events (manual + recurring)
 function generateAllEvents(data) {
     const now = new Date();
-    const oneMonthFromNow = new Date();
-    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
+    const twoMonthsFromNow = new Date();
+    twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
 
     const allEvents = [];
     
@@ -214,7 +214,7 @@ function generateAllEvents(data) {
             currentDate.setHours(0, 0, 0, 0);
             
             // Generate events for the next month
-            while (currentDate <= oneMonthFromNow) {
+            while (currentDate <= twoMonthsFromNow) {
                 // Check if it matches the configured day of week
                 if (currentDate.getDay() === recurringEvent.dayOfWeek) {
                     const eventDateStr = currentDate.toISOString().split('T')[0];
