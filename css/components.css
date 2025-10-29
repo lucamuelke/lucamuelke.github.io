@@ -119,6 +119,15 @@
     font-size: 0.9rem;
 }
 
+.info-notice-text {
+    margin-top: 20px;
+    padding: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+}
+
 /* Thursday Notice */
 .thursday-notice {
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%);
