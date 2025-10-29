@@ -593,8 +593,14 @@ footer a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .banner .container {
-        flex-wrap: wrap;
-        gap: 15px;
+        flex-wrap: nowrap;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+
+    .logo-icon {
+        height: 35px;
+        margin-right: 0;
     }
 
     .footer-logo-left {
@@ -618,8 +624,24 @@ footer a:hover {
     }
 
     nav ul.nav-links {
-        gap: 15px;
+        gap: 8px;
+        font-size: 0.85rem;
+    }
+
+    nav ul.nav-links li a {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .language-toggle {
+        padding: 6px 10px;
         font-size: 0.9rem;
+        gap: 5px;
+    }
+
+    .flag-icon {
+        width: 20px;
+        height: 14px;
     }
 
     .hero h1 {
@@ -677,16 +699,34 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
+    .banner .container {
+        padding: 10px 12px;
+    }
+
+    .logo-icon {
+        height: 30px;
+    }
+
     .hero {
         padding: 30px 15px;
     }
 
     nav ul.nav-links {
-        gap: 10px;
+        gap: 5px;
     }
 
     nav ul.nav-links li a {
-        padding: 6px 10px;
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    .language-toggle {
+        padding: 5px 8px;
         font-size: 0.85rem;
+    }
+
+    .flag-icon {
+        width: 18px;
+        height: 12px;
     }
 }
