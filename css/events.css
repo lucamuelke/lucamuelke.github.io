@@ -1,0 +1,126 @@
+/* Events List */
+.events-list {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.event-card {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border-left: 4px solid rgb(0, 193, 212);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.event-card.highlight {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%);
+    border-left: 5px solid #FFD700;
+    border-right: 5px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+.event-card.highlight::before {
+    content: "⭐";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.event-date {
+    background: linear-gradient(135deg, rgb(0, 193, 212) 0%, rgb(0, 170, 187) 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.event-date.multi-day {
+    padding: 10px 15px;
+}
+
+.event-date.multi-day .day-range {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.event-date.multi-day .date-range {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.event-info {
+    flex: 1;
+}
+
+.event-info h3 {
+    color: rgb(0, 193, 212);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.event-weekday {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 8px;
+    margin-top: -5px;
+}
+
+.event-time,
+.event-location {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.event-description {
+    color: #555;
+    line-height: 1.6;
+    margin-top: 10px;
+}
