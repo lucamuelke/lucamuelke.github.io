@@ -49,7 +49,7 @@ function createFooter() {
             <a href="https://tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-left">
                 <img src="TUHH_logo_rgb.svg" alt="TUHH Logo" class="footer-logo">
             </a>
-            <p>&copy; 2025 BoulderING AG | <a href="impressum.html">Impressum</a></p>
+            <p class="footer-top-text">&copy; 2025 BoulderING AG | <a href="impressum.html">Impressum</a></p>
             <a href="https://www.asta.tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-right">
                 <img src="astaLogo.svg" alt="AStA Logo" class="footer-logo">
             </a>
@@ -187,7 +187,7 @@ function generateAllEvents(data) {
     const now = new Date();
     const oneMonthFromNow = new Date();
     oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
-    
+
     const allEvents = [];
     
     // Add manual events (show until end time has passed)
