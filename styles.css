@@ -657,7 +657,7 @@ footer a:hover {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 20px;
-        j      ustify-content: space-between;
+        justify-content: space-between;
     }
 
     footer p {
