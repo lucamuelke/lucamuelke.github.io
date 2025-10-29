@@ -23,7 +23,7 @@ function createHeader() {
                 <ul class="nav-links">
                     <li><a href="index.html" ${currentPage === 'index.html' ? 'class="active"' : ''} data-de="Start" data-en="Home">Start</a></li>
                     <li><a href="events.html" ${currentPage === 'events.html' ? 'class="active"' : ''} data-de="Termine" data-en="Events">Termine</a></li>
-                    <li><a href="impressum.html" ${currentPage === 'impressum.html' ? 'class="active"' : ''}>Impressum</a></li>
+                    <li><a href="impressum.html" ${currentPage === 'impressum.html' ? 'class="active"' : ''} data-de="Impressum" data-en="Legal Notice">Impressum</a></li>
                 </ul>
             </nav>
             <button class="language-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
