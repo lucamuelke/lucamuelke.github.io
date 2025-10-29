@@ -593,15 +593,9 @@ footer a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .banner .container {
-      grid-template-columns: 1fr 1fr; /* 2 columns for the bottom row */
-      grid-template-areas:
-        "item2 item2" /* 2 spans full width on top */
-        "item1 item3"; /* 1 and 3 side by side below */
+        flex-wrap: wrap;
+        gap: 15px;
     }
-
-    .item1 { grid-area: item1; }
-    .item2 { grid-area: item2; }
-    .item3 { grid-area: item3; }
 
     .logo-text {
         display: none;
