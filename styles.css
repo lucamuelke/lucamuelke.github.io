@@ -597,12 +597,6 @@ footer a:hover {
         gap: 15px;
     }
 
-    .footer-text {
-        order: 3;
-        flex: 1 1 100%;
-        text-align: center;
-    }
-
     .footer-logo-left {
         order: 1;
         flex: 1 1 50%;
@@ -611,6 +605,12 @@ footer a:hover {
     .footer-logo-right {
         order: 2;
         flex: 1 1 50%;
+    }
+
+    .footer-text {
+        order: 3;
+        flex: 1 1 100%;
+        text-align: center;
     }
 
     .logo-text {
@@ -657,7 +657,7 @@ footer a:hover {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 20px;
-        justify-content: space-between;
+        j      ustify-content: space-between;
     }
 
     footer p {
