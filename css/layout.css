@@ -66,6 +66,18 @@ main {
     color: #555;
 }
 
+/* Events CTA */
+.events-cta {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.events-cta p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
 /* Join Section */
 .join-section {
     text-align: center;
