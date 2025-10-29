@@ -1,0 +1,43 @@
+/* Footer */
+footer {
+    background: #2d3748;
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+footer .container {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.footer-logo {
+    height: 50px;
+    width: auto;
+}
+
+.footer-logo-left {
+    order: 1;
+}
+
+.footer-logo-right {
+    order: 3;
+}
+
+footer p {
+    order: 2;
+    margin: 0;
+}
+
+footer a {
+    color: rgb(0, 193, 212);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

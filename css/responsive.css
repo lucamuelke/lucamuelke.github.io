@@ -1,0 +1,139 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner .container {
+        flex-wrap: nowrap;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+
+    .logo-icon {
+        height: 35px;
+        margin-right: 8px;
+    }
+
+    .footer-logo-left {
+        order: 1;
+        flex: 1 1 50%;
+    }
+
+    .footer-logo-right {
+        order: 2;
+        flex: 1 1 50%;
+    }
+
+    .footer-text {
+        order: 3;
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    nav ul.nav-links {
+        gap: 8px;
+    }
+
+    nav ul.nav-links li a {
+        padding: 6px 10px;
+        font-size: 0.95rem;
+    }
+
+    .language-toggle {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        gap: 5px;
+    }
+
+    .flag-icon {
+        width: 20px;
+        height: 14px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+    .info-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .event-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .event-date {
+        min-width: 100%;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    footer .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    footer p {
+        order: 2;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .telegram-join {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .telegram-qr img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner .container {
+        padding: 10px 12px;
+    }
+
+    .logo-icon {
+        height: 30px;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+
+    nav ul.nav-links {
+        gap: 5px;
+    }
+
+    nav ul.nav-links li a {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+    }
+
+    .language-toggle {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+    }
+
+    .flag-icon {
+        width: 18px;
+        height: 12px;
+    }
+}
