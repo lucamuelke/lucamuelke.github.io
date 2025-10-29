@@ -58,10 +58,24 @@
 
 /* Info Notice */
 .info-notice {
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(0, 193, 212, 0.05) 0%, rgba(0, 170, 187, 0.08) 100%);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(0, 193, 212, 0.15);
+    border: 2px solid rgba(0, 193, 212, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-notice::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 193, 212, 0.08) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .info-notice h3 {
@@ -73,22 +87,45 @@
 .info-notice ul {
     list-style: none;
     padding-left: 0;
+    position: relative;
 }
 
 .info-notice ul li {
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    border-left: 3px solid rgb(0, 193, 212);
-    color: #555;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid rgb(0, 193, 212);
+    color: #333;
+    box-shadow: 0 3px 15px rgba(0, 193, 212, 0.1);
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.info-notice ul li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 193, 212, 0.2);
+    border-left-width: 6px;
 }
 
 .info-notice ul li::before {
     content: "✓ ";
-    color: rgb(0, 193, 212);
+    color: white;
     font-weight: bold;
-    margin-right: 8px;
+    margin-right: 10px;
+    background: linear-gradient(135deg, rgb(0, 193, 212) 0%, rgb(0, 170, 187) 100%);
+    padding: 2px 8px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+}
+
+.info-notice-text {
+    margin-top: 20px;
+    padding: 0;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
 }
 
 /* Thursday Notice */
