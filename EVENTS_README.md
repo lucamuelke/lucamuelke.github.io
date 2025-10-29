@@ -11,7 +11,7 @@ The website now uses a dynamic events system where all events are defined in `ev
 ### 1. Manual Events
 Manual events are explicitly defined in the `events` array and are displayed until their end time has passed.
 
-### 2. Auto-Generated Events
+### 2. Recurring Events
 The system can automatically generate recurring events (like weekly "Open Bouldering" sessions). These are displayed for the next month only.
 
 ## File Structure: `events.json`
@@ -21,8 +21,8 @@ The system can automatically generate recurring events (like weekly "Open Boulde
   "events": [
     // Array of manual events
   ],
-  "autoEvents": {
-    // Configuration for auto-generated events
+  "recurringEvents": {
+    // Configuration for recurring events
   }
 }
 ```
@@ -49,7 +49,7 @@ Add a new event object to the `events` array:
     "en": "English Description"
   },
   "highlight": false,
-  "allowAutoEvent": false
+  "allowRecurringEvent": false
 }
 ```
 
@@ -63,16 +63,16 @@ Add a new event object to the `events` array:
 - **`location`** (required): Location with `de` and `en` translations
 - **`description`** (required): Description with `de` and `en` translations
 - **`highlight`** (optional): Set to `true` to make the event stand out with special styling (golden background, borders, glowing effect, and animated star icon)
-- **`allowAutoEvent`** (optional, default: `false`): 
-  - `false`: If this manual event is on the same day as an auto-generated event (e.g., a Thursday with Open Bouldering), the auto-generated event will be suppressed
-  - `true`: Both the manual event and any auto-generated event on the same day will be shown
+- **`allowRecurringEvent`** (optional, default: `false`): 
+  - `false`: If this manual event is on the same day as an recurring event (e.g., a Thursday with Open Bouldering), the recurring event will be suppressed
+  - `true`: Both the manual event and any recurring event on the same day will be shown
 
-## Auto-Generated Events Configuration
+## Recurring Events Configuration
 
 Currently configured to generate "Open Bouldering" events every Thursday:
 
 ```json
-"autoEvents": {
+"recurringEvents": {
   "openBouldering": {
     "dayOfWeek": 4,
     "startTime": "19:00",
@@ -94,7 +94,7 @@ Currently configured to generate "Open Bouldering" events every Thursday:
 }
 ```
 
-### Auto-Event Field Descriptions
+### Recurring Event Field Descriptions
 
 - **`dayOfWeek`**: Day of the week (0 = Sunday, 1 = Monday, ..., 4 = Thursday, ..., 6 = Saturday)
 - **`startTime`**, **`endTime`**, **`title`**, **`location`**, **`description`**: Same as manual events
@@ -103,10 +103,10 @@ Currently configured to generate "Open Bouldering" events every Thursday:
 ## Event Display Rules
 
 1. **Manual Events**: Displayed until their end time has passed (no matter how far in the future)
-2. **Auto-Generated Events**: Displayed for the next month only
+2. **Recurring Events**: Displayed for the next month only
 3. **Conflict Resolution**: 
-   - If a manual event falls on the same day as an auto-generated event and `allowAutoEvent: false`, only the manual event is shown
-   - If `allowAutoEvent: true`, both events are shown on the same day
+   - If a manual event falls on the same day as an recurring event and `allowRecurringEvent: false`, only the manual event is shown
+   - If `allowRecurringEvent: true`, both events are shown on the same day
 
 ## Examples
 
@@ -129,7 +129,7 @@ Currently configured to generate "Open Bouldering" events every Thursday:
     "en": "A special workshop for advanced climbers"
   },
   "highlight": false,
-  "allowAutoEvent": false
+  "allowRecurringEvent": false
 }
 ```
 Result: On Thursday Nov 7, only the "Special Workshop" is shown (Open Bouldering is suppressed).
@@ -153,7 +153,7 @@ Result: On Thursday Nov 7, only the "Special Workshop" is shown (Open Bouldering
     "en": "Special training for beginners"
   },
   "highlight": false,
-  "allowAutoEvent": true
+  "allowRecurringEvent": true
 }
 ```
 Result: On Thursday Nov 14, both "Beginner Training" and "Open Bouldering" are shown.
@@ -177,7 +177,7 @@ Result: On Thursday Nov 14, both "Beginner Training" and "Open Bouldering" are s
     "en": "Our big year-end trip! Registration required."
   },
   "highlight": true,
-  "allowAutoEvent": false
+  "allowRecurringEvent": false
 }
 ```
 Result: This event appears with special highlighting (golden background, borders, glowing effect, and animated star) to make it stand out.
@@ -202,7 +202,7 @@ Result: This event appears with special highlighting (golden background, borders
     "en": "Three days full of climbing adventures in the Alps!"
   },
   "highlight": false,
-  "allowAutoEvent": false
+  "allowRecurringEvent": false
 }
 ```
 Result: Shows "28-30 NOV" in the date box and "Fr - So" as the weekday range.
@@ -227,7 +227,7 @@ Result: Shows "28-30 NOV" in the date box and "Fr - So" as the weekday range.
     "en": "Full-day outdoor climbing trip to Ith. Registration required!"
   },
   "highlight": true,
-  "allowAutoEvent": false
+  "allowRecurringEvent": false
 }
 ```
 Result: Shows "29 NOV - 1 DEZ" in the date box and "Sa - Mo" as the weekday range.
@@ -252,10 +252,10 @@ Result: Shows "29 NOV - 1 DEZ" in the date box and "Sa - Mo" as the weekday rang
 - Ensure the JSON syntax is valid (use a JSON validator if needed)
 - For multi-day events, ensure `endDate` is after or equal to `date`
 
-**Auto-events not generating?**
-- Auto-events only generate for the next month
+**Recurring events not generating?**
+- Recurring events only generate for the next month
 - Check that `dayOfWeek` is set correctly (0-6)
-- Verify the `autoEvents` section is properly configured
+- Verify the `recurringEvents` section is properly configured
 
 **Language not switching?**
 - Ensure all text fields have both `de` and `en` properties

@@ -100,7 +100,7 @@ async function loadEvents() {
         });
         const data = await response.json();
         
-        // Generate all events (manual + auto-generated)
+        // Generate all events (manual + recurring-generated)
         const allEvents = generateAllEvents(data);
         
         // Clear existing events
@@ -120,7 +120,7 @@ async function loadEvents() {
     }
 }
 
-// Generate all events (manual + auto-generated)
+// Generate all events (manual + recurring)
 function generateAllEvents(data) {
     const now = new Date();
     const oneMonthFromNow = new Date();
@@ -144,43 +144,45 @@ function generateAllEvents(data) {
         });
     }
     
-    // Generate auto events (Open Bouldering on Thursdays)
-    if (data.autoEvents && data.autoEvents.openBouldering) {
-        const autoEvent = data.autoEvents.openBouldering;
-        const currentDate = new Date(now);
-        currentDate.setHours(0, 0, 0, 0);
-        
-        // Generate events for the next month
-        while (currentDate <= oneMonthFromNow) {
-            // Check if it's Thursday (4 = Thursday)
-            if (currentDate.getDay() === autoEvent.dayOfWeek) {
-                const eventDateStr = currentDate.toISOString().split('T')[0];
-                const eventDateTime = new Date(`${eventDateStr}T${autoEvent.startTime}`);
-                
-                // Check if this Thursday has a conflicting manual event
-                const hasConflict = allEvents.some(manualEvent => {
-                    return manualEvent.date === eventDateStr && !manualEvent.allowAutoEvent;
-                });
-                
-                // Only add if no conflict or if event is in the future
-                if (!hasConflict && eventDateTime >= now) {
-                    allEvents.push({
-                        date: eventDateStr,
-                        startTime: autoEvent.startTime,
-                        endTime: autoEvent.endTime,
-                        title: autoEvent.title,
-                        location: autoEvent.location,
-                        description: autoEvent.description,
-                        highlight: autoEvent.highlight,
-                        type: 'auto',
-                        dateTime: eventDateTime
-                    });
-                }
-            }
+    // Generate recurring events
+    if (data.recurringEvents) {
+        // Iterate over all recurring event types
+        Object.values(data.recurringEvents).forEach(recurringEvent => {
+            const currentDate = new Date(now);
+            currentDate.setHours(0, 0, 0, 0);
             
-            // Move to next day
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
+            // Generate events for the next month
+            while (currentDate <= oneMonthFromNow) {
+                // Check if it matches the configured day of week
+                if (currentDate.getDay() === recurringEvent.dayOfWeek) {
+                    const eventDateStr = currentDate.toISOString().split('T')[0];
+                    const eventDateTime = new Date(`${eventDateStr}T${recurringEvent.startTime}`);
+                    
+                    // Check if this day has a conflicting manual event
+                    const hasConflict = allEvents.some(manualEvent => {
+                        return manualEvent.date === eventDateStr && !manualEvent.allowRecurringEvent;
+                    });
+                    
+                    // Only add if no conflict or if event is in the future
+                    if (!hasConflict && eventDateTime >= now) {
+                        allEvents.push({
+                            date: eventDateStr,
+                            startTime: recurringEvent.startTime,
+                            endTime: recurringEvent.endTime,
+                            title: recurringEvent.title,
+                            location: recurringEvent.location,
+                            description: recurringEvent.description,
+                            highlight: recurringEvent.highlight,
+                            type: 'recurring',
+                            dateTime: eventDateTime
+                        });
+                    }
+                }
+                
+                // Move to next day
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+        });
     }
     
     // Sort events by date and time
