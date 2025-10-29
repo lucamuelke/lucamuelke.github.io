@@ -49,7 +49,7 @@ body {
 }
 
 .logo-icon {
-    height: 60px;
+    height: 40px;
     width: auto;
     margin-right: 10px;
 }
@@ -247,7 +247,7 @@ main {
 }
 
 .telegram-qr img {
-    max-width: 300px;
+    max-width: 200px;
     height: auto;
     border: 3px solid rgb(0, 193, 212);
     border-radius: 10px;
@@ -655,7 +655,7 @@ footer a:hover {
     }
     
     .telegram-qr img {
-        max-width: 225px;
+        max-width: 150px;
     }
 }
 
