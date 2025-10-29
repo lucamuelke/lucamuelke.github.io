@@ -18,7 +18,7 @@
         "en": "Full-day outdoor climbing trip to Ith. Registration required!"
       },
       "highlight": true,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2025-11-06",
@@ -37,7 +37,7 @@
         "en": "Tech session on feet. Improve your footwork in bouldering and climbing!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2025-11-20",
@@ -56,7 +56,7 @@
         "en": "Tech session on holds. Improve your grip technique in bouldering and climbing!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2025-12-04",
@@ -75,7 +75,7 @@
         "en": "Tech session on balance. Improve your balance in bouldering and climbing!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2025-12-11",
@@ -94,7 +94,7 @@
         "en": "Great opportunity to get to know the BoulderING AG or just to boulder with other students!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2025-12-18",
@@ -113,7 +113,7 @@
         "en": "Tech session on bouldering-specific antagonist training. Improve your technique in bouldering and climbing!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2026-01-08",
@@ -132,7 +132,7 @@
         "en": "Tech session on dynamic movements. Improve your technique in bouldering and climbing!"
       },
       "highlight": false,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     },
     {
       "date": "2026-02-28",
@@ -151,11 +151,11 @@
         "en": "Third annual bouldering competition of the BoulderING AG. All levels are welcome! Registration required!"
       },
       "highlight": true,
-      "allowAutoEvent": false
+      "allowRecurringEvent": false
     }
   ],
 
-  "autoEvents": {
+  "recurringEvents": {
     "openBouldering": {
       "dayOfWeek": 4,
       "startTime": "19:00",
