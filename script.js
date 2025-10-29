@@ -3,7 +3,13 @@ let currentLanguage = 'de'; // Default language
 
 // Create and insert header
 function createHeader() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Prevent duplicate headers
+    if (document.querySelector('header.banner')) {
+        return;
+    }
+    
+    const pathname = window.location.pathname;
+    const currentPage = pathname.endsWith('/') ? 'index.html' : pathname.split('/').pop() || 'index.html';
     
     const header = document.createElement('header');
     header.className = 'banner';
@@ -32,6 +38,11 @@ function createHeader() {
 
 // Create and insert footer
 function createFooter() {
+    // Prevent duplicate footers
+    if (document.querySelector('footer')) {
+        return;
+    }
+    
     const footer = document.createElement('footer');
     footer.innerHTML = `
         <div class="container">
