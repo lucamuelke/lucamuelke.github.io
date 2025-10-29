@@ -1,129 +1,4 @@
-// Language Management
-let currentLanguage = 'de'; // Default language
-
-// Create and insert header
-function createHeader() {
-    // Prevent duplicate headers
-    if (document.querySelector('header.banner')) {
-        return;
-    }
-    
-    const pathname = window.location.pathname;
-    const currentPage = pathname.endsWith('/') ? 'index.html' : pathname.split('/').pop() || 'index.html';
-    
-    const header = document.createElement('header');
-    header.className = 'banner';
-    header.innerHTML = `
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="Logo_BoulderING_V01-1.svg" alt="BoulderING AG Logo" class="logo-icon">
-                <span class="logo-text">BoulderING AG</span>
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html" ${currentPage === 'index.html' ? 'class="active"' : ''} data-de="Start" data-en="Home">Start</a></li>
-                    <li><a href="events.html" ${currentPage === 'events.html' ? 'class="active"' : ''} data-de="Termine" data-en="Events">Termine</a></li>
-                    <li><a href="impressum.html" ${currentPage === 'impressum.html' ? 'class="active"' : ''} data-de="Impressum" data-en="Imprint">Impressum</a></li>
-                </ul>
-            </nav>
-            <button class="language-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
-                <img id="flag" src="flag-de.svg" alt="German Flag" class="flag-icon">
-                <span id="lang-text">DE</span>
-            </button>
-        </div>
-    `;
-    
-    document.body.insertBefore(header, document.body.firstChild);
-}
-
-// Create and insert footer
-function createFooter() {
-    // Prevent duplicate footers
-    if (document.querySelector('footer')) {
-        return;
-    }
-    
-    const footer = document.createElement('footer');
-    footer.innerHTML = `
-        <div class="container">
-            <a href="https://tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-left">
-                <img src="TUHH_logo_rgb.svg" alt="TUHH Logo" class="footer-logo">
-            </a>
-            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="impressum.html" class="multilang" data-de="Impressum" data-en="Imprint">Impressum</a></p>
-            <a href="https://www.asta.tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-right">
-                <img src="astaLogo.svg" alt="AStA Logo" class="footer-logo">
-            </a>
-        </div>
-    `;
-    
-    document.body.appendChild(footer);
-}
-
-// Load saved language preference
-document.addEventListener('DOMContentLoaded', function() {
-    // Create header and footer
-    createHeader();
-    createFooter();
-    
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-        currentLanguage = savedLanguage;
-        updateLanguage();
-    }
-    
-    // Load and display events dynamically on the events page
-    loadEvents();
-});
-
-// Toggle between German and English
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
-    localStorage.setItem('language', currentLanguage);
-    updateLanguage();
-}
-
-// Update all multilingual elements
-function updateLanguage() {
-    // Update flag icon and language text
-    const flag = document.getElementById('flag');
-    const langText = document.getElementById('lang-text');
-    if (flag) {
-        flag.src = currentLanguage === 'de' ? 'flag-de.svg' : 'flag-gb.svg';
-        flag.alt = currentLanguage === 'de' ? 'German Flag' : 'UK Flag';
-    }
-    if (langText) {
-        langText.textContent = currentLanguage === 'de' ? 'DE' : 'EN';
-    }
-    
-    // Update HTML lang attribute
-    document.documentElement.lang = currentLanguage;
-    
-    // Update all elements with multilang class
-    const elements = document.querySelectorAll('.multilang');
-    elements.forEach(element => {
-        const translation = element.getAttribute('data-' + currentLanguage);
-        if (translation) {
-            // Use innerHTML if the translation contains HTML tags, otherwise use textContent
-            if (translation.includes('<')) {
-                element.innerHTML = translation;
-            } else {
-                element.textContent = translation;
-            }
-        }
-    });
-    
-    // Update navigation links
-    const navLinks = document.querySelectorAll('.nav-links a[data-de][data-en]');
-    navLinks.forEach(link => {
-        const translation = link.getAttribute('data-' + currentLanguage);
-        if (translation) {
-            link.textContent = translation;
-        }
-    });
-    
-    // Update month names in event cards
-    updateEventMonths();
-}
+// Events Module - Event Loading and Rendering
 
 // Update month names in dynamically generated event cards
 function updateEventMonths() {
@@ -137,7 +12,7 @@ function updateEventMonths() {
         const eventDateStr = card.getAttribute('data-event-date');
         if (eventDateStr) {
             const eventDate = new Date(eventDateStr);
-            const month = monthNames[currentLanguage][eventDate.getMonth()];
+            const month = monthNames[getCurrentLanguage()][eventDate.getMonth()];
             const monthSpan = card.querySelector('.event-date .month');
             if (monthSpan) {
                 monthSpan.textContent = month;
@@ -157,7 +32,7 @@ async function loadEvents() {
     
     try {
         // Force fetch from network, bypassing all caches
-        const response = await fetch('events.json', {
+        const response = await fetch('data/events.json', {
             cache: 'no-store'
         });
         const data = await response.json();
@@ -267,7 +142,7 @@ function createEventCard(event) {
         de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
         en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     };
-    const month = monthNames[currentLanguage][eventDate.getMonth()];
+    const month = monthNames[getCurrentLanguage()][eventDate.getMonth()];
     
     // Weekday name constants
     const weekdayNamesFull = {
@@ -297,7 +172,7 @@ function createEventCard(event) {
             weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
         } else {
             const endDay = endDate.getDate();
-            const endMonth = monthNames[currentLanguage][endDate.getMonth()];
+            const endMonth = monthNames[getCurrentLanguage()][endDate.getMonth()];
             
             // Format date range
             if (eventDate.getMonth() === endDate.getMonth()) {
@@ -352,14 +227,14 @@ function createEventCard(event) {
     card.innerHTML = `
         ${dateDisplayHTML}
         <div class="event-info">
-            <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[currentLanguage]}</h3>
+            <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[getCurrentLanguage()]}</h3>
             <p class="event-weekday multilang" data-de="${weekdayDisplayDe}" data-en="${weekdayDisplayEn}">${weekdayDisplayDe}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
-            <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[currentLanguage]}</span></p>
+            <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[getCurrentLanguage()]}</span></p>
             <p class="event-description multilang" 
                data-de="${event.description.de}" 
                data-en="${event.description.en}">
-               ${event.description[currentLanguage]}
+               ${event.description[getCurrentLanguage()]}
             </p>
         </div>
     `;
