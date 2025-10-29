@@ -21,25 +21,140 @@
       "allowAutoEvent": false
     },
     {
-      "date": "2025-12-06",
-      "startTime": "17:00",
-      "endTime": "19:00",
+      "date": "2025-11-06",
+      "startTime": "19:00",
+      "endTime": "23:00",
       "title": {
-        "de": "Hallenklettern Anfänger",
-        "en": "Indoor Climbing for Beginners"
+        "de": "Tech Session: Füße",
+        "en": "Tech Session: Feet"
       },
       "location": {
-        "de": "Kletterzentrum, Bergstraße 15",
-        "en": "Climbing center, Bergstraße 15"
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
       },
       "description": {
-        "de": "TestTestTestasndglkajbsdlkg Speziell für Anfänger! Wir zeigen dir die Grundlagen des Sicherns und Kletterns.",
-        "en": "Especially for beginners! We'll show you the basics of belaying and climbing."
+        "de": "Tech Session zum Thema Füße. Verbessere deine Fußtechnik beim Bouldern und Klettern!",
+        "en": "Tech session on feet. Improve your footwork in bouldering and climbing!"
       },
       "highlight": false,
       "allowAutoEvent": false
+    },
+    {
+      "date": "2025-11-20",
+      "startTime": "19:00",
+      "endTime": "23:00",
+      "title": {
+        "de": "Tech Session: Griffe",
+        "en": "Tech Session: Holds"
+      },
+      "location": {
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Tech Session zum Thema Griffe. Verbessere deine Grifftechnik beim Bouldern und Klettern!",
+        "en": "Tech session on holds. Improve your grip technique in bouldering and climbing!"
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2025-12-04",
+      "startTime": "19:00",
+      "endTime": "23:00",
+      "title": {
+        "de": "Tech Session: Balance",
+        "en": "Tech Session: Balance"
+      },
+      "location": {
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Tech Session zum Thema Balance. Verbessere dein Gleichgewicht beim Bouldern und Klettern!",
+        "en": "Tech session on balance. Improve your balance in bouldering and climbing!"
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2025-12-11",
+      "startTime": "19:00",
+      "endTime": "23:00",
+      "title": {
+        "de": "Semestermitte Session",
+        "en": "Mid-Semester Session"
+      },
+      "location": {
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Gute Möglichkeit, um die BoulderING AG kennenzulernen oder einfach nur zum Bouldern mit anderen Studierenden!",
+        "en": "Great opportunity to get to know the BoulderING AG or just to boulder with other students!"
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2025-12-18",
+      "startTime": "00:00",
+      "endTime": "23:59",
+      "title": {
+        "de": "Tech Session: Boulderspezifisches Antagonistentraining",
+        "en": "Tech Session: Bouldering-Specific Antagonist Training"
+      },
+      "location": {
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Tech Session zum Thema Boulderspezifisches Antagonistentraining. Verbessere deine Technik beim Bouldern und Klettern!",
+        "en": "Tech session on bouldering-specific antagonist training. Improve your technique in bouldering and climbing!"
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2026-01-08",
+      "startTime": "19:00",
+      "endTime": "23:00",
+      "title": {
+        "de": "Tech Session: Dino",
+        "en": "Tech Session: Dino"
+      },
+      "location": {
+        "de": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg",
+        "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
+      },
+      "description": {
+        "de": "Tech Session zum Thema Dynamische Bewegungen. Verbessere deine Technik beim Bouldern und Klettern!",
+        "en": "Tech session on dynamic movements. Improve your technique in bouldering and climbing!"
+      },
+      "highlight": false,
+      "allowAutoEvent": false
+    },
+    {
+      "date": "2026-02-28",
+      "startTime": "15:30",
+      "endTime": "21:00",
+      "title": {
+        "de": "Boulder Wettkampf",
+        "en": "Bouldering Competition"
+      },
+      "location": {
+        "de": "Abenteuerzentrum Hamburg, Wormser Str. 5, 22761 Hamburg (Ecke Wormser Str./Wittenbergstraße)",
+        "en": "Abenteuerzentrum Hamburg, Wormser Str. 5, 22761 Hamburg (Corner Wormser Str./Wittenbergstraße)"
+      },
+      "description": {
+        "de": "Dritter jährlicher Boulder Wettkampf der BoulderING AG. Alle Level sind willkommen! Anmeldung erforderlich!",
+        "en": "Third annual bouldering competition of the BoulderING AG. All levels are welcome! Registration required!"
+      },
+      "highlight": true,
+      "allowAutoEvent": false
     }
   ],
+
   "autoEvents": {
     "openBouldering": {
       "dayOfWeek": 4,
@@ -54,8 +169,8 @@
         "en": "Nordwandhalle, Am Inselpark 20, 21129 Hamburg"
       },
       "description": {
-        "de": "regelmäßiges offenes Boulder für alle Levels. Reduzierter Eintrittspreis für AG Mitglieder. Komm vorbei und klettere mit uns!",
-        "en": "Our regular open bouldering session for all levels. Discouted entrance fee for AG members. Come by and climb with us!"
+        "de": "Regelmäßiges offenes Bouldern für alle Level ohne festes Programm. Reduzierter Eintrittspreis für AG Mitglieder. Komm vorbei und bouldert mit uns!",
+        "en": "Regular open bouldering for all levels without a fixed program. Reduced entrance fee for AG members. Come by and boulder with us!"
       },
       "highlight": false
     }
