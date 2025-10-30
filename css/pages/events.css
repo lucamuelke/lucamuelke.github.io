@@ -14,7 +14,7 @@
 
 /* Events List */
 .events-list {
-    background: white;
+    background: var(--color-white);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -67,7 +67,7 @@
 
 .event-date {
     background: linear-gradient(135deg, rgb(0, 193, 212) 0%, rgb(0, 170, 187) 100%);
-    color: white;
+    color: var(--color-white);
     padding: 15px 20px;
     border-radius: 10px;
     text-align: center;
@@ -113,13 +113,13 @@
 }
 
 .event-info h3 {
-    color: rgb(0, 193, 212);
+    color: var(--color-primary);
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
 
 .event-weekday {
-    color: #888;
+    color: var(--color-text-lighter);
     font-size: 0.9rem;
     font-style: italic;
     margin-bottom: 8px;
@@ -127,13 +127,13 @@
 }
 
 .event-time {
-    color: #666;
+    color: var(--color-text-light);
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
 
 .event-location {
-    color: #666;
+    color: var(--color-text-light);
     margin-bottom: 8px;
     font-size: 0.95rem;
     display: flex;
@@ -146,7 +146,7 @@
 }
 
 .event-description {
-    color: #555;
+    color: var(--color-text-medium);
     line-height: 1.6;
     margin-top: 10px;
 }

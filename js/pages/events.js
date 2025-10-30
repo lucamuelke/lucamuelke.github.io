@@ -1,18 +1,29 @@
 // Events Module - Event Loading and Rendering
 
+// Constants for date formatting
+const MONTH_NAMES = {
+    de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
+    en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+};
+
+const WEEKDAY_NAMES_FULL = {
+    de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+};
+
+const WEEKDAY_NAMES_SHORT = {
+    de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+};
+
 // Update month names in dynamically generated event cards
 function updateEventMonths() {
-    const monthNames = {
-        de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
-        en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-    };
-    
     const eventCards = document.querySelectorAll('.event-card[data-event-date]');
     eventCards.forEach(card => {
         const eventDateStr = card.getAttribute('data-event-date');
         if (eventDateStr) {
             const eventDate = new Date(eventDateStr);
-            const month = monthNames[getCurrentLanguage()][eventDate.getMonth()];
+            const month = MONTH_NAMES[getCurrentLanguage()][eventDate.getMonth()];
             const monthSpan = card.querySelector('.event-date .month');
             if (monthSpan) {
                 monthSpan.textContent = month;
@@ -138,21 +149,7 @@ function createEventCard(event) {
     // Parse start date
     const eventDate = new Date(event.date);
     const day = eventDate.getDate();
-    const monthNames = {
-        de: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
-        en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-    };
-    const month = monthNames[getCurrentLanguage()][eventDate.getMonth()];
-    
-    // Weekday name constants
-    const weekdayNamesFull = {
-        de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-        en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    };
-    const weekdayNamesShort = {
-        de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-        en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    };
+    const month = MONTH_NAMES[getCurrentLanguage()][eventDate.getMonth()];
     
     // Check if multi-day event and validate endDate
     const isMultiDay = event.endDate && event.endDate !== event.date;
@@ -168,11 +165,11 @@ function createEventCard(event) {
         if (isNaN(endDate.getTime()) || endDate < eventDate) {
             console.warn(`Invalid endDate for event: ${event.title.de}. Treating as single-day event.`);
             // Treat as single-day event
-            weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
-            weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
+            weekdayDisplayDe = WEEKDAY_NAMES_FULL.de[eventDate.getDay()];
+            weekdayDisplayEn = WEEKDAY_NAMES_FULL.en[eventDate.getDay()];
         } else {
             const endDay = endDate.getDate();
-            const endMonth = monthNames[getCurrentLanguage()][endDate.getMonth()];
+            const endMonth = MONTH_NAMES[getCurrentLanguage()][endDate.getMonth()];
             
             // Format date range
             if (eventDate.getMonth() === endDate.getMonth()) {
@@ -184,17 +181,17 @@ function createEventCard(event) {
             }
             
             // Get weekday range for both languages (abbreviated)
-            const startWeekdayDe = weekdayNamesShort.de[eventDate.getDay()];
-            const endWeekdayDe = weekdayNamesShort.de[endDate.getDay()];
-            const startWeekdayEn = weekdayNamesShort.en[eventDate.getDay()];
-            const endWeekdayEn = weekdayNamesShort.en[endDate.getDay()];
+            const startWeekdayDe = WEEKDAY_NAMES_SHORT.de[eventDate.getDay()];
+            const endWeekdayDe = WEEKDAY_NAMES_SHORT.de[endDate.getDay()];
+            const startWeekdayEn = WEEKDAY_NAMES_SHORT.en[eventDate.getDay()];
+            const endWeekdayEn = WEEKDAY_NAMES_SHORT.en[endDate.getDay()];
             weekdayDisplayDe = `${startWeekdayDe} - ${endWeekdayDe}`;
             weekdayDisplayEn = `${startWeekdayEn} - ${endWeekdayEn}`;
         }
     } else {
         // Single day event
-        weekdayDisplayDe = weekdayNamesFull.de[eventDate.getDay()];
-        weekdayDisplayEn = weekdayNamesFull.en[eventDate.getDay()];
+        weekdayDisplayDe = WEEKDAY_NAMES_FULL.de[eventDate.getDay()];
+        weekdayDisplayEn = WEEKDAY_NAMES_FULL.en[eventDate.getDay()];
     }
     
     // Build date display HTML

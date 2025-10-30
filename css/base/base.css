@@ -1,3 +1,14 @@
+/* CSS Custom Properties */
+:root {
+    --color-primary: rgb(0, 193, 212);
+    --color-text-dark: #333;
+    --color-text-medium: #555;
+    --color-text-light: #666;
+    --color-text-lighter: #888;
+    --color-bg-light: #f5f5f5;
+    --color-white: white;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -8,8 +19,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-light);
 }
 
 .container {
