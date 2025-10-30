@@ -1,3 +1,17 @@
+/* Thursday Notice */
+.thursday-notice {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    border-left: 4px solid #FFD700;
+}
+
+.thursday-notice p {
+    margin: 0;
+    text-align: left;
+}
+
 /* Events List */
 .events-list {
     background: white;
