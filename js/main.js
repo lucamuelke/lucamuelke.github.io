@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load and display events dynamically on the events page
     loadEvents();
 
-    // Adjust spacing in imprint address blocks
-    imprintAddressSpacing();
+    // Adjust spacing in imprint address blocks (only on imprint page)
+    if (typeof imprintAddressSpacing === 'function') {
+        imprintAddressSpacing();
+    }
 });
