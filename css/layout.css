@@ -243,5 +243,5 @@ main {
 .legal-content .address-block br {
     display: block;
     content: "";
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
