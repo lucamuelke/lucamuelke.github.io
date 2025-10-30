@@ -2,14 +2,14 @@
 
 /* Legal Content */
 .legal-content {
-    background: white;
+    background: var(--color-white);
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .legal-content h2 {
-    color: rgb(0, 193, 212);
+    color: var(--color-primary);
     font-size: 1.8rem;
     margin-top: 30px;
     margin-bottom: 15px;
