@@ -112,11 +112,23 @@
     margin-top: -5px;
 }
 
-.event-time,
+.event-time {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
 .event-location {
     color: #666;
     margin-bottom: 8px;
     font-size: 0.95rem;
+    display: flex;
+    gap: 0.3em;
+    align-items: flex-start;
+}
+
+.event-location .location-icon {
+    flex-shrink: 0;
 }
 
 .event-description {
