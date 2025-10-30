@@ -230,7 +230,7 @@ function createEventCard(event) {
             <h3 class="multilang" data-de="${event.title.de}" data-en="${event.title.en}">${event.title[getCurrentLanguage()]}</h3>
             <p class="event-weekday multilang" data-de="${weekdayDisplayDe}" data-en="${weekdayDisplayEn}">${weekdayDisplayDe}</p>
             <p class="event-time">⏰ ${event.startTime} - ${event.endTime}</p>
-            <p class="event-location">📍 <span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[getCurrentLanguage()]}</span></p>
+            <p class="event-location"><span class="location-icon">📍</span><span class="multilang" data-de="${event.location.de}" data-en="${event.location.en}">${event.location[getCurrentLanguage()]}</span></p>
             <p class="event-description multilang" 
                data-de="${event.description.de}" 
                data-en="${event.description.en}">
