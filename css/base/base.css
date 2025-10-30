@@ -17,3 +17,9 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    min-height: calc(100vh - 200px);
+}
