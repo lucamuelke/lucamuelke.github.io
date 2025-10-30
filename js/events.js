@@ -53,7 +53,7 @@ async function loadEvents() {
         updateLanguage();
     } catch (error) {
         console.error('Error loading events:', error);
-        eventsContainer.innerHTML = '<p class="error">Fehler beim Laden der Events / Error loading events</p>';
+        eventsContainer.innerHTML = '<p class="error">Error loading events</p>';
     }
 }
 
