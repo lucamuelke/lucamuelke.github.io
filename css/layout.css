@@ -235,3 +235,13 @@ main {
     line-height: 1.8;
     margin-bottom: 15px;
 }
+
+.legal-content .address-block {
+    line-height: 1.3;
+}
+
+.legal-content .address-block br {
+    display: block;
+    content: "";
+    margin-top: 0.5em;
+}
