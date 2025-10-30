@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load and display events dynamically on the events page
     loadEvents();
 
-    // Adjust spacing in impressum address blocks
-    impressumAddressSpacing();
+    // Adjust spacing in imprint address blocks
+    imprintAddressSpacing();
 });

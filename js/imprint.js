@@ -1,4 +1,4 @@
-function impressumAddressSpacing() {
+function imprintAddressSpacing() {
     document.querySelectorAll('.legal-content .address-block').forEach(function (p) {
         // split on <br>, keeping text nodes intact
         // use innerHTML split to preserve any HTML inside lines
