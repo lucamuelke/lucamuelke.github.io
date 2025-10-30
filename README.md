@@ -10,10 +10,9 @@ Website for the BoulderING AG at TUHH (Technische Universität Hamburg).
 ├── events.html         # Events page
 ├── impressum.html      # Imprint/legal page
 ├── css/
-│   ├── base.css          # Reset and base styles
+│   ├── base.css          # Reset, base styles, and main layout
 │   ├── header.css        # Banner, navigation, language toggle
-│   ├── layout.css        # Shared layout styles (main, page-header)
-│   ├── components.css    # Reusable components (buttons, boxes)
+│   ├── components.css    # Reusable components (buttons, boxes, page-header)
 │   ├── index.css         # Index page specific styles
 │   ├── events.css        # Events page specific styles
 │   ├── imprint.css       # Imprint page specific styles
@@ -53,10 +52,9 @@ Then open http://localhost:8000 in your browser.
 
 ## CSS Modules
 
-- **base.css**: Reset styles, body defaults, and container layout
+- **base.css**: Reset styles, body defaults, container layout, and main content wrapper
 - **header.css**: Banner, navigation, logo, and language toggle styles
-- **layout.css**: Shared layout styles used across multiple pages (main content wrapper, page headers)
-- **components.css**: Reusable UI components (buttons, info boxes, notices)
+- **components.css**: Reusable UI components (buttons, info boxes, notices, page headers)
 - **index.css**: Index page specific styles (hero, about sections, telegram section, contact section)
 - **events.css**: Events page specific styles (event cards, event list, thursday notice)
 - **imprint.css**: Imprint page specific styles (legal content)

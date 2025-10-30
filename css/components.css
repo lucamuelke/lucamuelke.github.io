@@ -1,3 +1,24 @@
+/* Page Header - Used on events.html and imprint.html */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: rgb(0, 193, 212);
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
 /* Info Boxes */
 .info-boxes {
     display: grid;
