@@ -60,14 +60,43 @@
     }
 
     .content {
-        padding: 25px;
+        padding: 20px;
     }
 
     .info-boxes {
         grid-template-columns: 1fr;
     }
 
+    .info-box {
+        padding: 20px;
+    }
+
+    .info-notice {
+        padding: 20px;
+    }
+
+    .info-notice ul li {
+        padding: 12px 15px;
+    }
+
+    .thursday-notice {
+        padding: 15px;
+    }
+
+    .telegram-section {
+        padding: 20px;
+    }
+
+    .contact-section {
+        padding: 20px;
+    }
+
+    .events-list {
+        padding: 20px;
+    }
+
     .event-card {
+        padding: 15px;
         flex-direction: column;
         gap: 15px;
     }
@@ -116,6 +145,42 @@
 
     .hero {
         padding: 30px 15px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .info-box {
+        padding: 15px;
+    }
+
+    .info-notice {
+        padding: 15px;
+    }
+
+    .info-notice ul li {
+        padding: 10px 12px;
+    }
+
+    .thursday-notice {
+        padding: 12px;
+    }
+
+    .telegram-section {
+        padding: 15px;
+    }
+
+    .contact-section {
+        padding: 15px;
+    }
+
+    .events-list {
+        padding: 15px;
+    }
+
+    .event-card {
+        padding: 12px;
     }
 
     nav ul.nav-links {
