@@ -22,7 +22,7 @@ function createHeader() {
                 <ul class="nav-links">
                     <li><a href="index.html" ${currentPage === 'index.html' ? 'class="active"' : ''} data-de="Start" data-en="Home">Start</a></li>
                     <li><a href="events.html" ${currentPage === 'events.html' ? 'class="active"' : ''} data-de="Termine" data-en="Events">Termine</a></li>
-                    <li><a href="impressum.html" ${currentPage === 'impressum.html' ? 'class="active"' : ''} data-de="Impressum" data-en="Imprint">Impressum</a></li>
+                    <li><a href="imprint.html" ${currentPage === 'imprint.html' ? 'class="active"' : ''} data-de="Impressum" data-en="Imprint">Impressum</a></li>
                 </ul>
             </nav>
             <button class="language-toggle" onclick="toggleLanguage()" aria-label="Toggle Language">
@@ -48,7 +48,7 @@ function createFooter() {
             <a href="https://tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-left">
                 <img src="assets/TUHH_logo_rgb.svg" alt="TUHH Logo" class="footer-logo">
             </a>
-            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="impressum.html" class="multilang" data-de="Impressum" data-en="Imprint">Impressum</a></p>
+            <p class="footer-text">&copy; 2025 BoulderING AG | <a href="imprint.html" class="multilang" data-de="Impressum" data-en="Imprint">Impressum</a></p>
             <a href="https://www.asta.tuhh.de" target="_blank" rel="noopener noreferrer" class="footer-logo-right">
                 <img src="assets/astaLogo.svg" alt="AStA Logo" class="footer-logo">
             </a>
