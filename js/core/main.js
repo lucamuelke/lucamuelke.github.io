@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     updateLanguage();
     
     // Load and display events dynamically on the events page
-    loadEvents();
+    if (typeof loadEvents === 'function') {
+        loadEvents();
+    }
 
     // Adjust spacing in imprint address blocks (only on imprint page)
     if (typeof imprintAddressSpacing === 'function') {
