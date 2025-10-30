@@ -230,6 +230,31 @@ main {
     margin-bottom: 10px;
 }
 
+
+
+
+
+/* keep wrapped-line spacing */
+.legal-content .address-block {
+  line-height: 1.3;
+  margin: 0; /* if needed */
+  padding: 0;
+}
+
+/* each former <br> line becomes a block-level span */
+.legal-content .address-block .addr-line {
+  display: block;       /* makes each "line" its own block */
+  margin: 0;            /* reset default */
+  padding: 0;
+  line-height: 1.3;     /* same as parent, explicit for clarity */
+}
+
+/* add extra gap only between lines (not before the first) */
+.legal-content .address-block .addr-line + .addr-line {
+  margin-top: 0.5em;    /* <-- adjust this to control spacing after a <br> */
+}
+
+/*
 .legal-content p {
     color: #555;
     line-height: 1.8;
@@ -240,8 +265,9 @@ main {
     line-height: 1.3;
 }
 
-.legal-content .address-block br {
-    display: block;
-    content: "";
-    margin-top: 0.5em;
+.legal-content .address-block .br-spacer {
+  display: block;
+  height: 0.5em;
+  line-height: 0;
 }
+*/
